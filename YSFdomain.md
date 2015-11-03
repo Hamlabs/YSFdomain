@@ -28,7 +28,7 @@ In this specification, the domain name `example.com` is used throughout.
 
 The network controller(s) can be found by the client using DNS. These have the authoritative DNS servers for the network, and a set of HTTP REST services for registering Access Points (repeaters, nodes), getting the Reflector Room Directory and so on.
 
-DNS Lookup of `_ysfctrl._tcp.example.com` will give one or more SRV records that point the client to the HTTP REST endpoints.
+DNS Lookup of `_ctrl.example.com` will give one or more SRV records that point the client to the HTTP REST endpoints.
 
 Using its callsign, the client regularly registers as "available" using the correct REST endpoint, and is thereby marked as such in the repeater database.
 
@@ -45,6 +45,8 @@ By making DNS lookups under the configured domain, clients can get all the rest 
 When the Access Point receives RF traffic from a user, the Client reports the user's callsign to the Network Controller on the appropriate REST endpoint. The user is thereby registered as available on this Access Point in the roaming database.
 
 When a specific user needs to be contacted, DNS lookup of `USERCALLSIGN._user.example.com` gives the client an SRV record with the neccessary info to contact the user.
+
+The client can also use DMR number to lookup a callsign, in case the user requested it via DTMF. DNS lookup of `DMRID._dmrid.example.com` gives the client an SRV record with the neccessary info to contact the user.
 
 ### Reflector
 
